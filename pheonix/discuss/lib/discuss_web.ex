@@ -21,7 +21,8 @@ defmodule DiscussWeb do
 
   def router do
     quote do
-      use Phoenix.Router, helpers: false
+      use Phoenix.Router, helpers: true
+      alias DiscussWeb.Router.Helpers, as: Routes
 
       # Import common connection and controller functions to use in pipelines
       import Plug.Conn
@@ -33,6 +34,16 @@ defmodule DiscussWeb do
   def channel do
     quote do
       use Phoenix.Channel
+    end
+  end
+
+  def model do
+    quote do
+      use Ecto.Schema
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
     end
   end
 
